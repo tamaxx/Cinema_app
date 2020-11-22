@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CC853131"
-    tools:context="com.example.cinema_sensor.NomeActivity">
+    tools:context="com.example.cinema_sensor.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -28,9 +28,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <TextView
         android:id="@+id/textView9"
@@ -42,15 +43,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.105" />
 
     <Button
         android:id="@+id/btn_enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="104dp"
         android:background="#DDAB46"
         android:onClick="EnviarNome"
         android:text="@string/botao_enviar"
@@ -58,6 +59,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_digitaSenha"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/txt_digitaSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/desc_pag_senha"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_digitaNome"
-        app:layout_constraintVertical_bias="0.151" />
+        app:layout_constraintVertical_bias="0.11" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.cinema_sensor;
 
+import android.content.SharedPreferences;
 import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // this.deleteDatabase(LoginHelper.BANCO_DADOS);
+
         Bundle extras = getIntent().getExtras();
         TextView nome_digitado = findViewById(R.id.txt_nomeUsuario);
 
         if(extras != null){
-            String msgnome = extras.getString(NomeActivity.NOME);
+            String msgnome = extras.getString(LoginActivity.NOME);
             nome_digitado.setText("Bem-vindo(a), " + msgnome);
         }
 
@@ -85,8 +87,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Intent intentLocalizacao = new Intent(this, LocalizacaoActivity.class);
         startActivity(intentLocalizacao);
     }
-    public void RedirecionarUrgente(View v){
+    public void RedirecionarUrgente(View v) {
         Intent intentUrgente = new Intent(this, UrgenteActivity.class);
         startActivity(intentUrgente);
+    }
+    public void RedirecionarConsulta(View v) {
+        Intent intentConsulta = new Intent(this, ConsultaActivity.class);
+        startActivity(intentConsulta);
     }
 }
