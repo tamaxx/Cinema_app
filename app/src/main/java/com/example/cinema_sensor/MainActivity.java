@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Service;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
@@ -24,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // this.deleteDatabase(LoginHelper.BANCO_DADOS);
+        //this.deleteDatabase(LoginHelper.BANCO_DADOS); // Comando para "limpar" o banco
 
         Bundle extras = getIntent().getExtras();
         TextView nome_digitado = findViewById(R.id.txt_nomeUsuario);
@@ -95,4 +100,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Intent intentConsulta = new Intent(this, ConsultaActivity.class);
         startActivity(intentConsulta);
     }
+
 }

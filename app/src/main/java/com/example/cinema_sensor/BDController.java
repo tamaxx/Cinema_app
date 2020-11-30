@@ -24,7 +24,7 @@ public class BDController {
         valores.put(LoginHelper.USER_COLUMN_SENHA, senha);
 
         resultado = db.insert(LoginHelper.USER_TABLE_NAME, null, valores);
-        db.close();
+
 
         if(resultado == -1){
             return "Erro ao inserir registro";
@@ -39,10 +39,6 @@ public class BDController {
         db = banco.getReadableDatabase();
         cursor = db.query(banco.USER_TABLE_NAME, campos, null, null, null, null, null, null);
 
-        if(cursor!=null){
-            cursor.moveToFirst();
-        }
-        db.close();
         return cursor;
     }
 

@@ -37,13 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         String senhaUsuario = txt_senha.getText().toString();
         String resultado;
 
-        resultado = crud.insereDado(nomeUsuario, senhaUsuario);
-
-        Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-
-        intent.putExtra(NOME, nomeUsuario);
-        if(nomeUsuario.length() > 2){
+        if(txt_nome.length()>=5 && txt_senha.length()>=5) {
+            resultado = crud.insereDado(nomeUsuario, senhaUsuario);
+            Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
+            intent.putExtra(NOME, nomeUsuario);
             startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), "Insira um nome e senha com mais de 5 caracteres", Toast.LENGTH_SHORT).show();
         }
     }
 }

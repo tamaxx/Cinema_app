@@ -1,6 +1,5 @@
 package com.example.cinema_sensor;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -29,14 +28,5 @@ public class LoginHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    public boolean insertUser (Usuario u){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(USER_COLUMN_NAME, u.getNome());
-        contentValues.put(USER_COLUMN_SENHA, u.getSenha());
-        db.insert(USER_TABLE_NAME, null, contentValues);
-        return true;
     }
 }

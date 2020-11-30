@@ -23,9 +23,7 @@ public class SliderItem {
     public String getNome(){
         return nome;
     }
-    public String getGeneros(){
-        return generos;
-    }
+    public String getGeneros(){ return generos; }
     public String getDiretor(){
         return  diretor;
     }

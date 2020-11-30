@@ -5,6 +5,7 @@
     <string name="titulo_pag_contato">CONTATO</string>
     <string name="titulo_pag_localizacao">LOCALIZAÇÃO</string>
     <string name="titulo_pag_urgente">URGENTE</string>
+    <string name="titulo_pag_administracao">ADMIN</string>
     <string name="titulo_pag_nome">LOGIN</string>
     <string name="desc_pag_filme">Esses são alguns dos filmes em cartaz. Selecione aquele que te instiga e leia mais sobre</string>
     <string name="desc_pag_contato">Aqui estão algumas formas de nos encontrar. Não hesite em contatar-nos! </string>
@@ -19,6 +20,7 @@
     Informe-se sobre o novo coronavírus aqui:</string>
     <string name="mensagem_urgente2">A informação pode combater o contágio!</string>
     <string name="botao_enviar">Enviar</string>
+    <string name="baixar_imagem">Clique no botão abaixo para fazer o download do cartaz!</string>
     <string name="texto_urgente">Devido à situação atual do Mundo e principalmente do Brasil em relação ao novo coronavírus, muitos cinemas estão fechados! Mantenha-se atualizado sobre a situação do país e do Covid-19 no site oficial do governo. Lembre-se: o conhecimento é essencial em tempos como esse!</string>
     <string name="botao_acessar">ACESSAR</string>
     <string name="botao_favoritar">FAVORITO</string>

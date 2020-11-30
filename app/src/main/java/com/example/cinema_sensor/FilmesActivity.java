@@ -8,16 +8,29 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +39,10 @@ public class FilmesActivity extends AppCompatActivity implements
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+
+    private ImageView img_save;
+    private OutputStream outputStream;
+    private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
 
     private ViewPager2 viewPager2;
     private Handler sliderHandler = new Handler();
@@ -99,6 +116,7 @@ public class FilmesActivity extends AppCompatActivity implements
 
     @Override
     public void onItemSelected(SliderItem item) {
+
         dialogBuilder = new AlertDialog.Builder(this);
         final View DetalhesPopupView = getLayoutInflater().inflate(R.layout.popup, null);
 
@@ -117,8 +135,51 @@ public class FilmesActivity extends AppCompatActivity implements
         sinopseFilme = DetalhesPopupView.findViewById(R.id.txt_sinopseFilme);
         sinopseFilme.setText(item.getSinopse());
 
+        img_save = DetalhesPopupView.findViewById(R.id.img_download);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+
+                String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permission, WRITE_EXTERNAL_STORAGE_CODE);
+
+            } else {
+
+                img_save.setOnClickListener(v -> {
+                    BitmapDrawable drawable = (BitmapDrawable) imagemFilme.getDrawable();
+                    Bitmap bitmap = drawable.getBitmap();
+                    File filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+                    File dir = new File(filepath, "Cartazes");
+                    dir.mkdir();
+                    File file = new File(dir, System.currentTimeMillis()+".jpg");
+                    try {
+                        outputStream = new FileOutputStream(file);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                        Toast.makeText(getApplicationContext(), "Cartaz Salvo em Download/Cartazes", Toast.LENGTH_SHORT).show();
+                        try {
+                            outputStream.flush();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            outputStream.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+            }
+        }
+
         dialogBuilder.setView(DetalhesPopupView);
         dialog = dialogBuilder.create();
+
         dialog.show();
+
     }
+
 }
